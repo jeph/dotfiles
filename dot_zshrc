@@ -61,3 +61,6 @@ eval "$(starship init zsh)"
 
 # Configure colors for micro
 export "MICRO_TRUECOLOR=1"
+
+# Run fastfetch for cool terminal startup graphic
+fastfetch
