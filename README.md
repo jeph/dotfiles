@@ -76,7 +76,8 @@ chezmoi update -v
 
 ## Workflows
 
-Use the `add` command to add a new file to chezmoi:
+Use the `add` command to add a new file to chezmoi or an existing file's 
+changes:
 
 ```sh
 chezmoi add $FILE
