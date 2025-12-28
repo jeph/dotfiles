@@ -71,5 +71,8 @@ eval "$(starship init zsh)"
 # Configure colors for micro
 export "MICRO_TRUECOLOR=1"
 
+# Load machine-specific zsh settings (not managed by chezmoi)
+[[ -f "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
+
 # Run fastfetch for cool terminal startup graphic
 fastfetch

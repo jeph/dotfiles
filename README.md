@@ -41,6 +41,17 @@ managed by chezmoi):
     gpgsign = true
 ```
 
+Optional: create `~/.zshrc.local` for machine-specific shell config.
+`~/.zshrc` sources it if it exists, and it is not managed by chezmoi.
+(The `.local` suffix here just means “local overrides”; it’s unrelated to
+the `~/.local/` directory.)
+
+```sh
+# ~/.zshrc.local
+# Example:
+# export PATH="/opt/homebrew/bin:$PATH"
+```
+
 Alternatively, if you want to see what changes chezmoi will make,
 you can run:
 
