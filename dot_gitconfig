@@ -1,0 +1,14 @@
+[include]
+	path = ~/.gitconfig.local
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	unstage = reset HEAD --
+	last = log -1 HEAD
+	uncommit = reset HEAD~1
+[init]
+	defaultBranch = main
+[core]
+	editor = micro
