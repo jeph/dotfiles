@@ -15,22 +15,7 @@ brew install chezmoi
 Other installation options can be found
 [here](https://www.chezmoi.io/install/).
 
-Next, create a `chezmoi.toml` file in `~/.config/chezmoi/`
-
-```sh
-touch ~/.config/chezmoi/chezmoi.toml
-```
-
-Add the following data values to the `chezmoi.toml` file:
-
-```toml
-[data]
-    git_name = "git name to use"
-    git_email = "git email to use"
-    git_signing_key = "signing key to use"
-```
-
-Finally, run the following command to apply the dotfiles:
+Next, run the following command to apply the dotfiles:
 
 ```sh
 chezmoi init --apply Jeph
@@ -38,6 +23,23 @@ chezmoi init --apply Jeph
 
 **^ This will overwrite existing files so make sure to take a backup
 if there are any with content you care about.**
+
+After applying, create a local git config at `~/.gitconfig.local` for
+your machine-specific identity/signing settings (this file is not
+managed by chezmoi):
+
+```ini
+[user]
+    name = Your Name
+    email = you@example.com
+    signingkey = YOUR_SSH_SIGNING_KEY
+[gpg]
+    format = ssh
+[gpg "ssh"]
+    program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+    gpgsign = true
+```
 
 Alternatively, if you want to see what changes chezmoi will make,
 you can run:
