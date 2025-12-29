@@ -12,3 +12,5 @@
 	defaultBranch = main
 [core]
 	editor = micro
+[pull]
+	rebase = true
