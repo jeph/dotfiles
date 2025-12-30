@@ -27,6 +27,15 @@ return {
           width = 0.97,
         },
       },
+      explorer = {
+        replace_netrw = true,
+      },
+      picker = {
+        sources = {
+          files = { hidden = true },
+          explorer = { hidden = true },
+        },
+      },
     },
   },
 }
