@@ -22,9 +22,11 @@ return {
         sources = {
           explorer = {
             hidden = true,
+            ignored = true,
           },
           files = {
             hidden = true,
+            ignored = true,
           },
           grep = {
             hidden = true,
@@ -42,12 +44,6 @@ return {
       },
       explorer = {
         replace_netrw = true,
-      },
-      picker = {
-        sources = {
-          files = { hidden = true },
-          explorer = { hidden = true },
-        },
       },
     },
   },
