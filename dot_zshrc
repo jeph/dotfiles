@@ -74,12 +74,22 @@ eval "$(starship init zsh)"
 # Configure colors for micro
 export "MICRO_TRUECOLOR=1"
 
+# Set neovim as default editor
+export EDITOR=nvim
+export VISUAL=nvim
+
+# Open the current command in your $EDITOR
+# Press Ctrl+x followed by e to trigger
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^Xe' edit-command-line
+
 # Run ls -A after every directory change
 chpwd() {
   ls -A
 }
 
-# Run git commit with a message using Ctrl+x + g +_c
+# Run git commit with a message using Ctrl+x + g + c
 bindkey -s '^Xgc' 'git commit -m ""\C-b'
 
 # Run fastfetch for cool terminal startup graphic
