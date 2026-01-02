@@ -74,5 +74,13 @@ eval "$(starship init zsh)"
 # Configure colors for micro
 export "MICRO_TRUECOLOR=1"
 
+# Run ls -A after every directory change
+chpwd() {
+  ls -A
+}
+
+# Run git commit with a message using Ctrl+x + g +_c
+bindkey -s '^Xgc' 'git commit -m ""\C-b'
+
 # Run fastfetch for cool terminal startup graphic
 fastfetch
