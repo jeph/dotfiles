@@ -102,9 +102,9 @@ format = '[ $user ]($style)'
 
 [hostname]
 ssh_only = true
-format = '[ $ssh_symbol ]($style)'
+format = '[$ssh_symbol ]($style)'
 ssh_symbol = '󰣀'
-style = 'bg:surface0 fg:sky'
+style = 'bold bg:surface0 fg:sky'
 
 [directory]
 style = "fg:mantle bg:peach"
