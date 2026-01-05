@@ -90,7 +90,12 @@ chpwd() {
 }
 
 # Run git commit with a message using Ctrl+x + g + c
-bindkey -s '^Xgc' 'git commit -m ""\C-b'
+function gcmsg() {
+  LBUFFER+='git commit -m "'
+  RBUFFER='"'${RBUFFER}
+}
+zle -N gcmsg
+bindkey '^Xgc' gcmsg
 
 # Run fastfetch for cool terminal startup graphic
 fastfetch
