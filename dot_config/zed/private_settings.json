@@ -1,0 +1,17 @@
+{
+  "format_on_save": "off",
+  "disable_ai": true,
+  "icon_theme": "Catppuccin Mocha",
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "autosave": "on_focus_change",
+  "base_keymap": "JetBrains",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": "Catppuccin Mocha",
+  "project_panel": {
+    "dock": "right",
+  },
+}
