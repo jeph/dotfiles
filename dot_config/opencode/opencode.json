@@ -14,5 +14,9 @@
   },
   "keybinds": {
     "leader": "ctrl+x"
+  },
+  "permission": {
+    "edit": "ask",
+    "bash": "ask"
   }
 }
