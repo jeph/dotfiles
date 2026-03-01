@@ -78,6 +78,9 @@ export "MICRO_TRUECOLOR=1"
 export EDITOR=nvim
 export VISUAL=nvim
 
+# Enable OpenCode websearch tool (Exa) by default
+export OPENCODE_ENABLE_EXA=1
+
 # Open the current command in your $EDITOR
 # Press Ctrl+x followed by e to trigger
 autoload -Uz edit-command-line
