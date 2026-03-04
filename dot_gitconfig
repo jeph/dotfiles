@@ -1,4 +1,5 @@
 [include]
+	path = ~/.config/delta/catppuccin.gitconfig
 	path = ~/.gitconfig.local
 [alias]
 	co = checkout
@@ -12,5 +13,13 @@
 	defaultBranch = main
 [core]
 	editor = nvim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	features = catppuccin-mocha
+[merge]
+	conflictStyle = zdiff3
 [pull]
 	rebase = true
