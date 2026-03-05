@@ -19,6 +19,7 @@
 [delta]
 	navigate = true
 	features = catppuccin-mocha
+	keep-plus-minus-markers = true
 [merge]
 	conflictStyle = zdiff3
 [pull]
