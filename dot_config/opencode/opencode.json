@@ -1,5 +1,22 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "share": "disabled",
+  "bash": {
+    "rm *": "ask",
+    "rmdir *": "ask",
+    "mv *": "ask",
+    "dd *": "deny"
+  },
+  "external_directory": {
+    "~/.config/**": "allow",
+    "~/.zshrc": "allow",
+    "~/.gitconfig": "allow",
+    "~/.zshrc.local": "allow",
+    "~/.gitconfig.local": "allow",
+    "~/.tmux/**": "allow",
+    "~/.tmux.conf": "allow",
+    "~/Developer/**": "allow"
+  },
   "mcp": {
     "brave-search": {
       "type": "local",
