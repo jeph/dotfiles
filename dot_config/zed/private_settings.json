@@ -1,4 +1,8 @@
 {
+  "ui_font_family": ".ZedSans",
+  "buffer_line_height": "comfortable",
+  "buffer_font_weight": 400.0,
+  "buffer_font_family": "Hack Nerd Font",
   "format_on_save": "off",
   "disable_ai": false,
   "icon_theme": "Catppuccin Mocha",
@@ -12,8 +16,8 @@
     "catppuccin-icons": true,
   },
   "base_keymap": "JetBrains",
-  "ui_font_size": 16,
-  "buffer_font_size": 14,
+  "ui_font_size": 16.0,
+  "buffer_font_size": 13.0,
   "theme": "Catppuccin Mocha",
   "project_panel": {
     "dock": "left",
