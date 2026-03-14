@@ -52,6 +52,12 @@ eval "$(fzf --zsh)"
 # Set up fnm for managing node versions
 eval "$(fnm env --use-on-cd --shell zsh)"
 
+# Set up SDKMAN for managing Java versions
+if command -v brew >/dev/null 2>&1; then
+  export SDKMAN_DIR="$(brew --prefix)/opt/sdkman-cli/libexec"
+  [[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
+fi
+
 alias pn=pnpm
 alias ls=lsd
 alias cat=bat
