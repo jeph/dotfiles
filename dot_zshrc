@@ -95,6 +95,11 @@ chpwd() {
   ls -A
 }
 
+# Load shared secrets from 1Password CLI when available
+if command -v op >/dev/null 2>&1 && op whoami >/dev/null 2>&1; then
+  export BRAVE_API_KEY="$(op read "op://Credentials/Brave Search API Key/credential")"
+fi
+
 # Run git commit with a message using Ctrl+x + g + c
 function gcmsg() {
   LBUFFER+='git commit -m "'
