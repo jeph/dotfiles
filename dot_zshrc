@@ -95,6 +95,9 @@ chpwd() {
   ls -A
 }
 
+# Configure Home Assistant CLI
+export HASS_SERVER="https://home.jeph.io"
+
 # Load shared secrets from 1Password CLI when available
 if command -v op >/dev/null 2>&1; then
   if brave_key="$(op read "op://Credentials/Brave Search API Key/credential" 2>/dev/null)"; then
@@ -104,7 +107,7 @@ if command -v op >/dev/null 2>&1; then
   fi
 
   if home_assistant_token="$(op read "op://Credentials/Home Assistant Token/credential" 2>/dev/null)"; then
-    export HOME_ASSISTANT_TOKEN="$home_assistant_token"
+    export HASS_TOKEN="$home_assistant_token"
   else
     print -u2 "Could not load Home Assistant token from 1Password!"
   fi
