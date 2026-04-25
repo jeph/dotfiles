@@ -100,7 +100,13 @@ if command -v op >/dev/null 2>&1; then
   if brave_key="$(op read "op://Credentials/Brave Search API Key/credential" 2>/dev/null)"; then
     export BRAVE_SEARCH_API_KEY="$brave_key"
   else
-    print -u2 "Could not load API keys from 1password!"
+    print -u2 "Could not load Brave Search API key from 1Password!"
+  fi
+
+  if home_assistant_token="$(op read "op://Credentials/Home Assistant Token/credential" 2>/dev/null)"; then
+    export HOME_ASSISTANT_TOKEN="$home_assistant_token"
+  else
+    print -u2 "Could not load Home Assistant token from 1Password!"
   fi
 fi
 
