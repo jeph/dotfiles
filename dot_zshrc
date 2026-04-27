@@ -98,18 +98,14 @@ chpwd() {
 # Configure Home Assistant CLI
 export HASS_SERVER="https://home.jeph.io"
 
-# Load shared secrets from 1Password CLI when available
-if command -v op >/dev/null 2>&1; then
-  if brave_key="$(op read "op://Credentials/Brave Search API Key/credential" 2>/dev/null)"; then
+# Load local Doppler secrets into the shell environment when logged in.
+if command -v doppler >/dev/null 2>&1 && doppler me >/dev/null 2>&1; then
+  if brave_key="$(doppler secrets get BRAVE_SEARCH_API_KEY --project local --config local --plain 2>/dev/null)"; then
     export BRAVE_SEARCH_API_KEY="$brave_key"
-  else
-    print -u2 "Could not load Brave Search API key from 1Password!"
   fi
 
-  if home_assistant_token="$(op read "op://Credentials/Home Assistant Token/credential" 2>/dev/null)"; then
+  if home_assistant_token="$(doppler secrets get HASS_TOKEN --project local --config local --plain 2>/dev/null)"; then
     export HASS_TOKEN="$home_assistant_token"
-  else
-    print -u2 "Could not load Home Assistant token from 1Password!"
   fi
 fi
 
