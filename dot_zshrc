@@ -1,3 +1,6 @@
+# Add Homebrew-managed Rust tools
+export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
+
 # Set up zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
