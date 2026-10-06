@@ -71,7 +71,7 @@
     { "type": "memory", "key": "{$2}{#keys}Memory" },
     { "type": "swap", "key": "{$2}{#keys}Swap" },
     { "type": "disk", "folders": "/", "key": "{$2}{#keys}Disk ({mountpoint})", "format": "{size-percentage-bar} {size-used} / {size-total} ({size-percentage})" },
-    { "type": "battery", "key": "{$2}{#keys}Battery" },
+    { "type": "battery", "key": "{$2}{#keys}Battery", "format": "{capacity-bar} ({capacity})" },
     { "type": "localip", "key": "{$2}{#keys}Local IP ({ifname})" },
     { "type": "poweradapter", "key": "{$2}{#keys}Power Adapter" },
     { "type": "locale", "key": "{$2}{#keys}Locale" },
