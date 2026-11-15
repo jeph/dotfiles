@@ -1,0 +1,110 @@
+// Stacked variant of config.jsonc for terminals narrower than its 86-column
+// box: logo above the stats in a 53-column box. The logo is still positioned
+// "left" so fastfetch does the cursor bookkeeping for every logo type; the 15
+// border-only rows after the top border keep the stats below it. fastfetch
+// loads only one config file, so the module list from the title down is
+// duplicated here and has to be kept in sync by hand.
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "kitty",
+    "source": "~/.config/fastfetch/slowpoke.png",
+    "width": 30,
+    "height": 15,
+    "padding": {
+      "top": 1,
+      "left": 11,
+      "right": 0
+    }
+  },
+  "display": {
+    "constants": [
+      "───────────────────────────────────────────────────",
+      "\u001b[38;2;108;112;134m\u001b[1G│\u001b[53G│\u001b[3G"
+    ],
+    "color": {
+      "keys": "#89b4fa",
+      "title": "#cba6f7",
+      "output": "#cdd6f4",
+      "separator": "#6c7086"
+    },
+    "percent": {
+      "type": 3,
+      "color": {
+        "green": "#a6e3a1",
+        "yellow": "#f9e2af",
+        "red": "#f38ba8"
+      }
+    },
+    "bar": {
+      "width": 10,
+      "color": {
+        "total": "#585b70"
+      },
+      "char": {
+        "elapsed": "𜴳",
+        "total": "𜴳"
+      },
+      "border": {
+        "left": "",
+        "right": ""
+      }
+    },
+    "size": {
+      "binaryPrefix": "jedec"
+    }
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "\u001b[1G{#separator}╭{$1}╮"
+    },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    { "type": "custom", "format": "{$2}" },
+    {
+      "type": "title",
+      "format": "{$2}{user-name-colored}{at-symbol-colored}{host-name-colored}"
+    },
+    {
+      "type": "custom",
+      "format": "{$2}"
+    },
+    { "type": "os", "key": "{$2}{#keys}OS" },
+    { "type": "host", "key": "{$2}{#keys}Host" },
+    { "type": "uptime", "key": "{$2}{#keys}Uptime" },
+    { "type": "shell", "key": "{$2}{#keys}Shell" },
+    { "type": "de", "key": "{$2}{#keys}DE" },
+    { "type": "icons", "key": "{$2}{#keys}Icons" },
+    { "type": "memory", "key": "{$2}{#keys}Memory" },
+    { "type": "swap", "key": "{$2}{#keys}Swap" },
+    { "type": "disk", "folders": "/", "key": "{$2}{#keys}Disk ({mountpoint})", "format": "{size-percentage-bar} {size-used} / {size-total} ({size-percentage})" },
+    { "type": "battery", "key": "{$2}{#keys}Battery" },
+    { "type": "localip", "key": "{$2}{#keys}Local IP ({ifname})" },
+    { "type": "poweradapter", "key": "{$2}{#keys}Power Adapter" },
+    { "type": "locale", "key": "{$2}{#keys}Locale" },
+    { "type": "custom", "format": "{$2}" },
+    {
+      "type": "custom",
+      "format": "{$2}{#38;5;8}● {#38;5;7}● {#38;5;6}● {#38;5;5}● {#38;5;4}● {#38;5;3}● {#38;5;2}● {#38;5;1}●{#}"
+    },
+    { "type": "custom", "format": "{$2}" },
+    {
+      "type": "custom",
+      "format": "\u001b[1G{#separator}╰{$1}╯"
+    }
+  ]
+}

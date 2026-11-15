@@ -113,4 +113,4 @@ if command -v doppler >/dev/null 2>&1 && doppler me >/dev/null 2>&1; then
 fi
 
 # Run fastfetch for cool terminal startup graphic
-fastfetch
+source ~/.config/zsh/fastfetch.zsh
