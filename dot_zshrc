@@ -101,16 +101,7 @@ chpwd() {
 # Configure Home Assistant CLI
 export HASS_SERVER="https://home.jeph.io"
 
-# Load local Doppler secrets into the shell environment when logged in.
-if command -v doppler >/dev/null 2>&1 && doppler me >/dev/null 2>&1; then
-  if brave_key="$(doppler secrets get BRAVE_SEARCH_API_KEY --project local --config local --plain 2>/dev/null)"; then
-    export BRAVE_SEARCH_API_KEY="$brave_key"
-  fi
-
-  if home_assistant_token="$(doppler secrets get HASS_TOKEN --project local --config local --plain 2>/dev/null)"; then
-    export HASS_TOKEN="$home_assistant_token"
-  fi
-fi
-
 # Run fastfetch for cool terminal startup graphic
 source ~/.config/zsh/fastfetch.zsh
+
+export PATH="$PATH:$HOME/.local/bin"
