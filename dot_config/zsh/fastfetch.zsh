@@ -34,11 +34,17 @@ fastfetch_placeholder_logo=
 }
 
 # Sets REPLY to how the slowpoke image is sent:
-#   kitty  kitty graphics protocol, as the config files say (Ghostty, Herdr, kitty)
-#   tmux   through tmux to a Ghostty or kitty client (see above)
-#   none   inside tmux attached from another terminal, so the logo is left out
+#   kitty        kitty graphics protocol, as the config files say (Ghostty, kitty)
+#   placeholder  placeholder cells (see above), sent straight to the terminal.
+#                Herdr.app draws an image placed at the cursor outside its pane
+#                once it scrolls and keeps it when the screen is cleared;
+#                placeholder cells scroll and clear as text does
+#   tmux         placeholder cells, through tmux to a Ghostty or kitty client
+#   none         inside tmux attached from another terminal, so the logo is left out
 fastfetch_image_mode() {
   REPLY=kitty
+  # herdr-core sets HC_TERMINAL_ID in every terminal it runs
+  [[ -n $HC_TERMINAL_ID ]] && REPLY=placeholder
   [[ -n $TMUX ]] || return 0
   # The TERM and the self-reported name of the terminal tmux is attached from
   local client=$(tmux display-message -p '#{allow-passthrough} #{client_termname} #{client_termtype}' 2>/dev/null)
@@ -56,10 +62,12 @@ fastfetch_greeting() {
   (( COLUMNS >= fastfetch_wide_columns )) || args+=(-c ~/.config/fastfetch/narrow.jsonc)
   fastfetch_image_mode
   case $REPLY in
-    tmux)
-      # Transmit the PNG; tmux passes on what is between \ePtmux; and \e\\,
-      # with every ESC inside doubled
-      print -rn -- $'\ePtmux;\e\e_Gf=100,a=T,U=1,q=2,c=30,r=15,i='${fastfetch_placeholder_image}';'"$(base64 < ~/.config/fastfetch/slowpoke.png | tr -d '\n')"$'\e\e\\\e\\'
+    tmux|placeholder)
+      local transmit=$'\e_Gf=100,a=T,U=1,q=2,c=30,r=15,i='${fastfetch_placeholder_image}';'"$(base64 < ~/.config/fastfetch/slowpoke.png | tr -d '\n')"$'\e\\'
+      # tmux passes on what is between \ePtmux; and \e\\, with every ESC
+      # inside doubled
+      [[ $REPLY == tmux ]] && transmit=$'\ePtmux;'${transmit//$'\e'/$'\e\e'}$'\e\\'
+      print -rn -- $transmit
       args+=(--logo-type data-raw --logo $fastfetch_placeholder_logo)
       ;;
     none)
